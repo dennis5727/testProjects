@@ -22,3 +22,24 @@ export function hideModal(modalId) {
   const modal = bootstrap.Modal.getInstance(document.getElementById(modalId));
   if (modal) modal.hide();
 }
+
+// XSS prevention for dynamic content insertion
+export function escapeHtml(text) {
+  return String(text).replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character]);
+}
+
+// Date formatting to match server's strftime("%B %d, %Y")
+export function formatDate(dateString) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "2-digit",
+  });
+}
