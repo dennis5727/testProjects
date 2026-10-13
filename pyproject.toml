@@ -11,6 +11,7 @@ dependencies = [
     "aiosmtplib>=5.1.0",
     "aiosqlite>=0.22.1",
     "alembic>=1.18.4",
+    "boto3>=1.43.112",
     "fastapi[standard]>=0.141.1",
     "pillow>=12.3.0",
     "psycopg[binary]>=3.3.3",

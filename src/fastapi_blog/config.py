@@ -18,6 +18,12 @@ class Settings(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_minutes: int = 30
 
+    s3_bucket_name: str
+    s3_region: str = "ap-southeast-2"
+    s3_access_key_id: SecretStr | None = None
+    s3_secret_access_key: SecretStr | None = None
+    s3_endpoint_url: str | None = None
+
     max_upload_size_bytes: int = 5 * 1024 * 1024  # 5 MB
 
     posts_per_page: int = 10
