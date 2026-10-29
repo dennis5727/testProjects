@@ -1,0 +1,40 @@
+# COUNT, AVG, MIN, MAX, SUM               # MAX & MIN give alphabetical order with String     
+SELECT AVG("rating") FROM "longlist";     # column name becomes AVG("rating)
+SELECT ROUND(AVG("rating")) FROM "longlist";
+SELECT ROUND(AVG("rating")) AS "Average Rating" FROM "longlist";
+SELECT MIN("rating") AS "Minimul Rating" FROM "longlist";
+SELECT COUNT(*) FROM "longlist";          # COUNT only counts NOT NULL rows
+
+# DISTINCT
+SELECT DISTINCT "publisher" FROM "longlist";
+SELECT COUNT(DISTINCT "publisher") FROM "longlist"
+
+
+
+
+
+# Database with more than one table
+
+sqlite3 longlist.db
+.tables    #command to check tables   
+
+
+1. One-to-One (1:1)
+One record in Table A is related to only one record in Table B.
+Example: One person has one passport, and each passport belongs to one person.
+
+2. One-to-Many (1:N)
+One record in Table A can be related to multiple records in Table B.
+Example: One author can write many books, but each book has one author 
+(in this simplified example).
+
+3. Many-to-Many (M:N)
+Multiple records in Table A can be related to multiple records in Table B.
+Example: One student can enroll in many courses, and one course can have many students.
+
+
+# concept of Primary Key (unique) and Foreign Key
+# joint table
+
+
+
