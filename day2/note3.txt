@@ -1,0 +1,32 @@
+# Subquery
+
+SELECT "title" FROM "books" 
+WHERE "publisher_id" = (
+    SELECT "id" FROM "publishers" 
+    WHERE "publisher" = 'Kyaw Gyi'
+);
+
+SELECT average("rating") AS "Average Rating" FROM "ratings"
+WHERE "book_id" = (
+    SELECT "id" FROM "books"
+    WHERE "title" LIKE '%breaking bird%'
+);
+
+SELECT(
+    SELECT(
+        SELECT
+    )
+);
+
+
+# IN
+SELECT "title" FROM "books"
+WHERE "id" IN (
+    SELECT "book_id" FROM "authors"
+    WHERE "author_id" = (
+        SELECT "id" FROM "authors"
+        WHERE "name" = 'Kyaw Gyi'
+    )
+);
+
+
