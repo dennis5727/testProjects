@@ -1,0 +1,29 @@
+# INNER JOIN
+Returns only rows that have matching values in both tables.
+
+# LEFT JOIN (LEFT OUTER JOIN)
+Returns all rows from the left table and matching rows from the right table.
+If there is no match, the right-side columns contain NULL.
+
+# RIGHT JOIN (RIGHT OUTER JOIN)
+Returns all rows from the right table and matching rows from the left table.
+If there is no match, the left-side columns contain NULL.
+
+# FULL JOIN (FULL OUTER JOIN)
+Returns all rows from both tables, whether they match or not.
+Missing values are filled with NULL.
+
+# NATURAL JOIN 
+It automatically joins tables using columns that have the same name.
+For example, if both tables contain author_id, SQL automatically uses it to match rows.
+It is usually an inner join unless specified otherwise.
+
+SELECT
+    authors.author_name,
+    books.title,
+    sales.quantity
+FROM authors
+LEFT JOIN books
+    ON authors.author_id = books.author_id
+INNER JOIN sales
+    ON books.book_id = sales.book_id;
