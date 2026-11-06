@@ -1,0 +1,46 @@
+# Constraints
+
+Constraint	    Meaning
+
+PRIMARY KEY	    Identifies each row uniquely
+REFERENCES	    Defines a foreign-key relationship
+NOT NULL	    Prevents missing (NULL) values
+UNIQUE	        Prevents duplicate non-NULL values
+CHECK	        Requires values to satisfy a condition
+DEFAULT	        Supplies a value when none is provided
+
+
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT UNIQUE,
+    age INTEGER CHECK(age >= 18),
+    country TEXT DEFAULT 'Thailand'
+);
+
+CREATE TABLE students (
+    firstname TEXT,
+    familyname TEXT NOT NULL,
+    PRIMARY KEY(firstname, familyname)
+);
+CREATE TABLE enrollments (
+    firstname TEXT,
+    familyname TEXT NOT NULL,
+    course_id INTEGER,
+    FOREIGN KEY (firstname, familyname)
+        REFERENCES students(firstname, familyname)
+);
+
+CREATE TABLE enrollments (
+    student_id INTEGER NOT NULL,
+    course_id INTEGER NOT NULL,
+    grade REAL CHECK (grade BETWEEN 0 AND 100),
+
+    PRIMARY KEY (student_id, course_id),
+
+    FOREIGN KEY (student_id)
+        REFERENCES students(student_id),
+
+    FOREIGN KEY (course_id)
+        REFERENCES courses(course_id)
+);
