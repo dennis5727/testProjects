@@ -1,0 +1,60 @@
+# schema
+Instead of manually creating tables every time, can save SQL statements in a file called schema.sql
+code schema.sql    # will open the file, and write SQL statements
+
+# using schema.sql in database
+sqlite3 filename.db
+.read schema.sql
+.schema               #whole schema
+.schema tableName     #sqlite command
+
+
+# Storage Classes in sqlite
+# NULL
+- Represents a missing value. It is not the same as 0, an empty string '', or the word 'NULL'.
+eg. SELECT * FROM students
+WHERE age IS NULL;
+
+# INTEGER
+Stores whole numbers without decimal fractions. 
+SQLite automatically chooses an appropriate integer storage size depending on the number.
+
+# REAL
+Stores floating-point numbers including decimals. These values may contain small rounding errors.
+
+# TEXT
+Stores strings such as names, addresses, and descriptions
+
+# BLOB
+Stands for Binary Large Object. It stores binary information without interpreting or converting its contents.
+
+
+# Storage classes vs. Type affinities
+Storage class describes the actual type of an individual stored value.
+Type affinity describes the preferred type of values in a column.
+
+Type affinity	     Preferred behavior
+
+TEXT	             Prefer text storage
+NUMERIC	             Convert suitable values to INTEGER or REAL
+INTEGER	             Prefer integer-style numeric storage
+REAL	             Prefer floating-point storage
+BLOB	             No automatic type preference
+
+
+# CREATE, DROP, INSERT
+
+CREATE TABLE riders (
+    id INTEGER,
+    name TEXT
+);
+
+DROP TABLE riders
+
+INSERT INTO riders (name)
+VALUE ('Kyaw Gyi')               # id will be NULL since I didn't insert
+
+INSERT INTO riders (id, name)
+VALUE 
+    (1, 'Khine')
+    (2, 'Kham')

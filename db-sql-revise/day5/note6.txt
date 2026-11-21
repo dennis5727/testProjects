@@ -1,0 +1,15 @@
+# GROUP BY, HAVING
+
+SELECT book_id, ROUND(AVG(rating), 2) AS "average rating" FROM ratings
+GROUP BY book_id 
+HAVING "average rating" > 4.00
+
+#     SQLite: Supports aliases in HAVING.     #
+#     PostgreSQL: Does not support aliases in HAVING.     #
+
+SELECT r.book_id, books.title, AVG(r.rating) AS "average rating" 
+FROM ratings r
+JOIN books ON books.book_id = r.book_id
+GROUP BY r.book_id, books.title     # selected books.title should be included it in GROUP BY
+HAVING AVG(r.rating) > 4
+ORDERED BY AVG(r.rating) DESC

@@ -1,0 +1,52 @@
+# Sets
+
+1. Both queries must return the same number of columns.
+2. Corresponding columns must have compatible data types.
+
+JOIN → Connects tables based on related values.
+UNION → Combines results and removes duplicates.
+INTERSECT → Finds common rows.
+EXCEPT → Finds rows in the first result but not the second.
+UNION ALL → Combines results without removing duplicates.
+
+
+# Tables and Queries
+
+Table 1: Python_Students
+student_id	student_name
+1	Alice
+2	Bob
+3	Charlie
+4	David
+
+Table 2: SQL_Students
+id	name
+2	Bob
+3	Charlie
+5	Emma
+6	Frank
+
+Table 3: Java_Students
+learner_id	learner_name
+1	Alice
+3	Charlie
+5	Emma
+7	Grace
+
+All unique students who are enrolled in Python OR SQL. 
+# Bob and Charlie will appear twice. One time as PY-student and one time as SQL-student"
+# Column name will appear according to the first SELECT. Here, Students | student-name
+SELECT 'PY-student' AS "Students", student_name from Python_Students
+UNION
+SELECT 'SQL-student', name from SQL_Students
+
+All students & their id who are enrolled in BOTH Python AND SQL.
+SELECT "student_name", "student_id" from "Python_Students"
+INTERSECT
+SELECT "name", "id" from "SQL_Students"
+
+SELECT student_id, student_name FROM Python_Students
+UNION ALL
+SELECT id, name FROM SQL_Students
+UNION ALL
+SELECT learner_id, learner_name FROM Java_Students;
